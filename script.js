@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   const FORM_ENDPOINT = "https://formspree.io/f/xwprzoaj"; // <-- Deine eigene Endpoint-URL hier einfügen!
-  contactForm.addEventListener("submit", ev => {
+  contactForm.addEventListener("submit", async ev => {
     ev.preventDefault();
 
     const name = contactForm.querySelector("#name").value.trim();
@@ -78,28 +78,47 @@ if (contactForm) {
     const message = contactForm.querySelector("#message").value.trim();
     const status = document.getElementById("formStatus");
 
-    // einfache Validierung
+    // --- einfache Validierung ---
     if (!name || !email || !message) {
       status.textContent = "Bitte fülle alle Felder aus.";
-      status.classList.remove("sr-only");
       status.style.color = "orange";
       return;
     }
 
-    // sehr einfache E-Mail-Prüfung
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
       status.textContent = "Bitte gib eine gültige E-Mail-Adresse ein.";
-      status.classList.remove("sr-only");
       status.style.color = "orange";
       return;
     }
 
-    // hier könntest du später fetch() zum Backend einfügen
-    status.textContent = "Nachricht erfolgreich gesendet. Wir melden uns bald bei dir!";
-    status.classList.remove("sr-only");
-    status.style.color = "limegreen";
+    // --- Daten an Formspree senden ---
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json"
+        },
+        body: new FormData(contactForm)
+      });
 
-    contactForm.reset();
+      if (response.ok) {
+        status.textContent = "Nachricht erfolgreich gesendet – wir melden uns bald!";
+        status.style.color = "limegreen";
+        contactForm.reset();
+      } else {
+        const data = await response.json();
+        if (data.errors && data.errors.length > 0) {
+          status.textContent = data.errors.map(err => err.message).join(", ");
+        } else {
+          status.textContent = "Fehler beim Senden. Bitte später erneut versuchen.";
+        }
+        status.style.color = "red";
+      }
+    } catch (err) {
+      console.error("Formspree Error:", err);
+      status.textContent = "Verbindungsfehler – bitte später erneut versuchen.";
+      status.style.color = "red";
+    }
   });
 }
 
