@@ -1,0 +1,311 @@
+/* ==============================
+   GLOBAL RESET & BASE STYLES
+   ============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light {
+  background: #fafafa;
+  color: #1a1a1a;
+}
+
+/* ==============================
+   ACCESSIBILITY
+   ============================== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #00aaff;
+  color: white;
+  padding: 8px 16px;
+  z-index: 1000;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ==============================
+   HEADER (KOPFZEILE)
+   ============================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #1e1e1e;
+  border-bottom: 1px solid #333;
+  z-index: 1200;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  gap: 1rem;
+}
+
+.logo {
+  color: #00aaff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Navigation */
+.header-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.header-nav a:hover,
+.header-nav a.active {
+  color: #00aaff;
+}
+
+/* Theme Toggle Button */
+.icon-btn {
+  background: #00aaff;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.2s ease;
+}
+.icon-btn:hover {
+  background: #0090dd;
+}
+
+/* Platz für festen Header */
+main {
+  padding-top: 4.5rem;
+}
+
+/* ==============================
+   MAIN CONTENT & TYPOGRAPHY
+   ============================== */
+main section {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem 1.5rem;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+a {
+  color: #00aaff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   BUTTONS & LINKS
+   ============================== */
+.action-btn {
+  display: inline-block;
+  background: #00aaff;
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.action-btn:hover {
+  background: #0090dd;
+  transform: translateY(-1px);
+}
+.action-btn:active {
+  transform: translateY(1px);
+}
+
+/* ==============================
+   TEAM SECTION
+   ============================== */
+.team-section {
+  margin-top: 2rem;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.team-card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+body.light .team-card {
+  background: #ffffff;
+  border-color: #ddd;
+}
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.team-photo img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 0.8rem;
+}
+.team-card h3 {
+  margin-bottom: 0.3rem;
+}
+.team-card .role {
+  font-size: 0.9rem;
+  color: #00aaff;
+  margin-bottom: 0.6rem;
+}
+
+/* ==============================
+   FORMS (Kontakt)
+   ============================== */
+form {
+  max-width: 600px;
+  margin-top: 1rem;
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+input, textarea {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+input:focus, textarea:focus {
+  outline: 2px solid #00aaff;
+  border-color: #00aaff;
+}
+body.light input, body.light textarea {
+  background: #fff;
+  color: #111;
+  border-color: #ccc;
+}
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+.site-footer {
+  background: #1e1e1e;
+  border-top: 1px solid #333;
+  color: #ccc;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+}
+body.light .site-footer {
+  background: #f0f0f0;
+  color: #333;
+  border-top-color: #ccc;
+}
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.footer-inner a {
+  color: #00aaff;
+}
+.footer-inner a:hover {
+  text-decoration: underline;
+}
+.footer-inner address {
+  font-style: normal;
+  margin-bottom: 0.6rem;
+}
+.footer-inner p {
+  margin: 0.3rem 0;
+}
+
+#contactForm {
+  max-width: 600px;
+  margin: 1rem auto;
+}
+#contactForm input,
+#contactForm textarea {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+body.light #contactForm input,
+body.light #contactForm textarea {
+  background: #fff;
+  color: #111;
+  border-color: #ccc;
+}
+#contactForm input:focus,
+#contactForm textarea:focus {
+  outline: 2px solid #00aaff;
+  border-color: #00aaff;
+}

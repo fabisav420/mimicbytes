@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"deno.enable": false,
+		"liveServer.settings.multiRootWorkspaceName": "website"
+	}
+}

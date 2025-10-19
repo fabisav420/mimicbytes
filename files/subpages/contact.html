@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt | Meine Website</title>
+  <link rel="stylesheet" href="../style.css" />
+
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+
+  <div class="header-inner">
+
+    <a href="../index.html" class="logo">MimicBytes</a>
+
+    <nav class="header-nav" aria-label="Hauptnavigation">
+
+      <ul>
+        <li><a href="../index.html" >🏠 Start</a></li>
+        <li><a href="./about.html">👥 Über uns</a></li>
+        <li><a href="./projects.html">💼 Projekte</a></li>
+        <li><a href="./contact.html" class="active">📬 Kontakt</a></li>
+      </ul>
+
+    </nav>
+
+    <button id="themeToggle" class="icon-btn" aria-pressed="false" title="Modus umschalten">🌙</button>
+
+  </div>
+
+</header>
+
+  <main>
+    <section id="home">
+      <h1>Willkommen!</h1>
+      <p>Dies ist unsere Kontaktseite und hier kannst du mit uns in Kontakt treten.</p>
+    </section>
+
+    <section id="contact">
+
+      <form id="contactForm" novalidate>
+        <h2>Kontaktformular</h2>
+
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Dein Name" required />
+      </div>
+
+      <div class="form-row">
+        <label for="email">E-Mail-Adresse</label>
+        <input id="email" name="email" type="email" placeholder="name@example.com" required />
+      </div>
+
+      <div class="form-row">
+        <label for="message">Nachricht</label>
+        <textarea id="message" name="message" placeholder="Deine Nachricht ..." required></textarea>
+      </div>
+
+      <button type="submit" class="action-btn">Nachricht senden</button>
+
+      <p id="formStatus" class="sr-only" aria-live="polite"></p>
+
+    </form>
+
+    </section>
+
+  </main>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
