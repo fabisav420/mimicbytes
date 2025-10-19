@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === Kontaktformular ===
-const contactForm = document.getElementById("contactForm");
+/*const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   const FORM_ENDPOINT = "https://formspree.io/f/xwprzoaj"; // <-- Deine eigene Endpoint-URL hier einfügen!
   contactForm.addEventListener("submit", async ev => {
@@ -85,14 +85,15 @@ if (contactForm) {
       return;
     }
 
-    /*if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
       status.textContent = "Bitte gib eine gültige E-Mail-Adresse ein.";
       status.style.color = "orange";
       return;
     }*/
-
+}
     // --- Daten an Formspree senden ---
-    const form = document.querySelector('.contact-form');
+    document.addEventListener('DOMContentLoaded', function () {
+  const form = document.querySelector('.contact-form');
   const successMessage = document.querySelector('.form-success-message');
 
   form.addEventListener('submit', function (e) {
@@ -124,7 +125,8 @@ if (contactForm) {
       alert('Es gab einen Fehler beim Senden.');
     });
   });
-}
+});
+//}
 
   // === Jahr im Footer ===
   const yearEl = document.getElementById("copyrightYear");
