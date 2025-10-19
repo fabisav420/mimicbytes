@@ -93,8 +93,8 @@ if (contactForm) {
 }
     // --- Daten an Formspree senden ---
     document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('.contact-form');
-  const successMessage = document.querySelector('.form-success-message');
+  const form = document.getElementById("contactForm");
+  const successMessage = document.getElementById("formStatus");
 
   form.addEventListener('submit', function (e) {
     e.preventDefault(); // Verhindert normales Abschicken
