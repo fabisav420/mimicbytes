@@ -13,10 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
   });
 
-  // === Subpages vorbereiten ===
+  // === Basis-URL bestimmen (Root oder Subdir?) ===
+  // Wenn wir uns auf einer Subpage befinden, müssen wir zurück ins Root für fetch()
+  const basePath = window.location.pathname.includes("/subpages/")
+    ? "../"
+    : "./";
+
+  // === Subpages vorladen ===
   const subpages = ["about", "projects", "contact"];
   subpages.forEach(page => {
-    fetch(`subpages/${page}.html`)
+    fetch(`${basePath}subpages/${page}.html`)
       .then(res => res.text())
       .then(html => (cache[page] = html))
       .catch(() => console.warn(`Konnte ${page}.html nicht vorladen.`));
