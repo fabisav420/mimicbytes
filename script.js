@@ -92,33 +92,37 @@ if (contactForm) {
     }
 
     // --- Daten an Formspree senden ---
-    try {
-      const response = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json"
-        },
-        body: new FormData(contactForm)
-      });
+    const form = document.querySelector('.contact-form');
+  const successMessage = document.querySelector('.form-success-message');
 
-      if (response.ok) {
-        status.textContent = "Nachricht erfolgreich gesendet – wir melden uns bald!";
-        status.style.color = "limegreen";
-        contactForm.reset();
-      } else {
-        const data = await response.json();
-        if (data.errors && data.errors.length > 0) {
-          status.textContent = data.errors.map(err => err.message).join(", ");
-        } else {
-          status.textContent = "Fehler beim Senden. Bitte später erneut versuchen.";
-        }
-        status.style.color = "red";
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Verhindert normales Abschicken
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
       }
-    } catch (err) {
-      console.error("Formspree Error:", err);
-      status.textContent = "Verbindungsfehler – bitte später erneut versuchen.";
-      status.style.color = "red";
-    }
+    })
+    .then(response => {
+      if (response.ok) {
+        successMessage.style.display = 'block';
+        successMessage.style.opacity = '0';
+        setTimeout(() => {
+          successMessage.style.opacity = '1';
+          successMessage.style.transition = 'opacity 0.4s ease';
+        }, 10);
+        form.reset();
+      } else {
+        alert('Es gab ein Problem beim Senden. Bitte versuche es später erneut.');
+      }
+    })
+    .catch(error => {
+      alert('Es gab einen Fehler beim Senden.');
+    });
   });
 }
 
