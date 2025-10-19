@@ -85,11 +85,11 @@ if (contactForm) {
       return;
     }
 
-    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+    /*if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
       status.textContent = "Bitte gib eine gültige E-Mail-Adresse ein.";
       status.style.color = "orange";
       return;
-    }
+    }*/
 
     // --- Daten an Formspree senden ---
     const form = document.querySelector('.contact-form');
