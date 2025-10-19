@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Kontaktformular ===
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
+  const FORM_ENDPOINT = "https://formspree.io/f/xwprzoaj"; // <-- Deine eigene Endpoint-URL hier einfügen!
   contactForm.addEventListener("submit", ev => {
     ev.preventDefault();
 
