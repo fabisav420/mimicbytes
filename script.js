@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const main = document.getElementById("main");
   const navLinks = document.querySelectorAll(".header-nav a");
-  const cache = {}; // hält bereits geladene Subpages
+  const cache = {};
 
   // === Dark Mode ===
   const themeToggle = document.getElementById("themeToggle");
@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === Basis-URL bestimmen (Root oder Subdir?) ===
-  // Wenn wir uns auf einer Subpage befinden, müssen wir zurück ins Root für fetch()
   const basePath = window.location.pathname.includes("/subpages/")
     ? "../"
     : "./";
@@ -32,17 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
   navLinks.forEach(link => {
     link.addEventListener("click", ev => {
       const href = link.getAttribute("href");
-      if (!href.startsWith("subpages/")) return; // nur Subpages abfangen
+      if (!href.startsWith("subpages/")) return;
       ev.preventDefault();
 
       const pageKey = href.replace("subpages/", "").replace(".html", "");
-
-      // Hauptinhalt ersetzen
       if (cache[pageKey]) {
         updateMainFromCache(pageKey);
-        window.history.pushState({ page: pageKey }, "", href); // <-- wichtig!
+        window.history.pushState({ page: pageKey }, "", href);
       } else {
-        // Falls nicht vorgeladen: normal weiterleiten
         window.location.href = href;
       }
     });
@@ -66,67 +62,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === Kontaktformular ===
-/*const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-  const FORM_ENDPOINT = "https://formspree.io/f/xwprzoaj"; // <-- Deine eigene Endpoint-URL hier einfügen!
-  contactForm.addEventListener("submit", async ev => {
-    ev.preventDefault();
-
-    const name = contactForm.querySelector("#name").value.trim();
-    const email = contactForm.querySelector("#email").value.trim();
-    const message = contactForm.querySelector("#message").value.trim();
+  // === Kontaktformular (Formspree + Validierung) ===
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
     const status = document.getElementById("formStatus");
 
-    // --- einfache Validierung ---
-    if (!name || !email || !message) {
-      status.textContent = "Bitte fülle alle Felder aus.";
-      status.style.color = "orange";
-      return;
-    }
+    contactForm.addEventListener("submit", async e => {
+      e.preventDefault();
 
-    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
-      status.textContent = "Bitte gib eine gültige E-Mail-Adresse ein.";
-      status.style.color = "orange";
-      return;
-    }*/
-}
-    // --- Daten an Formspree senden ---
-    document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById("contactForm");
-  const successMessage = document.getElementById("formStatus");
+      const name = contactForm.querySelector("#name").value.trim();
+      const email = contactForm.querySelector("#email").value.trim();
+      const message = contactForm.querySelector("#message").value.trim();
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Verhindert normales Abschicken
-
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
+      // --- einfache Validierung ---
+      if (!name || !email || !message) {
+        status.textContent = "Bitte fülle alle Felder aus.";
+        status.style.color = "orange";
+        return;
       }
-    })
-    .then(response => {
-      if (response.ok) {
-        successMessage.style.display = 'block';
-        successMessage.style.opacity = '0';
-        setTimeout(() => {
-          successMessage.style.opacity = '1';
-          successMessage.style.transition = 'opacity 0.4s ease';
-        }, 10);
-        form.reset();
-      } else {
-        alert('Es gab ein Problem beim Senden. Bitte versuche es später erneut.');
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        status.textContent = "Bitte gib eine gültige E-Mail-Adresse ein.";
+        status.style.color = "orange";
+        return;
       }
-    })
-    .catch(error => {
-      alert('Es gab einen Fehler beim Senden.');
+
+      // --- Daten an Formspree senden ---
+      try {
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+          status.style.display = "block";
+          status.textContent = "Nachricht erfolgreich gesendet – wir melden uns bald!";
+          status.style.color = "limegreen";
+          status.style.opacity = "0";
+          setTimeout(() => {
+            status.style.transition = "opacity 0.4s ease";
+            status.style.opacity = "1";
+          }, 10);
+          contactForm.reset();
+        } else {
+          const data = await response.json();
+          if (data.errors && data.errors.length > 0) {
+            status.textContent = data.errors.map(err => err.message).join(", ");
+          } else {
+            status.textContent = "Fehler beim Senden. Bitte später erneut versuchen.";
+          }
+          status.style.color = "red";
+        }
+      } catch (err) {
+        console.error("Formspree Error:", err);
+        status.textContent = "Verbindungsfehler – bitte später erneut versuchen.";
+        status.style.color = "red";
+      }
     });
-  });
-});
-//}
+  }
 
   // === Jahr im Footer ===
   const yearEl = document.getElementById("copyrightYear");
