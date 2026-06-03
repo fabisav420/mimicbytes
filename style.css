@@ -202,10 +202,9 @@ a {
   margin-top: 2rem;
 }
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+	gap: 1rem;
 }
 .team-card {
   background: var(--corp-grey-dark);
@@ -647,9 +646,10 @@ div.test2 {
 
 
 .outer_card{
-	width: 400px;
-	height: 600px;
+	max-width: 500px;
+	height: auto;
 	position: relative;
+	min-width: 400px;
 }
 
 .outer_card img {
@@ -657,27 +657,28 @@ div.test2 {
 }
 
 .inner_profile_card{
-	position: relative;
+	position: absolute;
 	width: 100%;
-	height: 600px;
-	/*background: var(--corp-cyan);
-	clip-path: polygon(10% 0%, 80% 0%, 90% 20%, 90% 90%, 20% 100%, 10% 80%, 10% 0%);*/
-	overflow: hidden;
+	height: auto;
+	text-align: center;
+	top: 57%;
 }
 
-.inner_profile_card p{
-	padding: 20px;
-	top: 4px;
-	left: 0px;
+.outer_card p{
+	width: 60%;
 	position: absolute;
+	margin-bottom: 0;
+	transform: translate(33%, -125%);
 }
 
 .inner_profile_card h3{
-	padding: 20px;
-	position: absolute;
 	width: 100%;
-	text-align: center;
-	top: -44%;
+	margin: 0;
+	font-weight: bold;
+}
+
+.inner_profile_card h4{
+	font-weight: lighter;
 }
 
 
