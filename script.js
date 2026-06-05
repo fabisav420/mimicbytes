@@ -44,6 +44,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // === Mobile Menu ===
+	const burgerBtn = document.querySelector(".burger-btn");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+function closeMenu() {
+    burgerBtn.classList.remove("active");
+    mobileMenu.classList.remove("open");
+}
+
+burgerBtn.addEventListener("click", () => {
+    burgerBtn.classList.toggle("active");
+    mobileMenu.classList.toggle("open");
+    document.body.classList.toggle("menu-open");
+});
+
+
+
+
+
+
+
+
+
   // === Browser-Zurück-Button ===
   window.addEventListener("popstate", event => {
     if (event.state && event.state.page && cache[event.state.page]) {
