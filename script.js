@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cache = {};
 
   // === Dark Mode ===
-  const themeToggle = document.getElementById("themeToggle");
+  /*const themeToggle = document.getElementById("themeToggle");
   const saved = localStorage.getItem("theme");
   if (saved === "light") body.classList.add("light");
   themeToggle.addEventListener("click", () => {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.text())
       .then(html => (cache[page] = html))
       .catch(() => console.warn(`Konnte ${page}.html nicht vorladen.`));
-  });
+  });*/
 
   // === Navigation (Klick auf Menü) ===
   navLinks.forEach(link => {
