@@ -820,27 +820,49 @@ body.light .carousel-btn {
    Logo Augenbewegung
    ============================== */
 .logo-face {
-  position: relative;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: relative;
+	height: 55px;
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .eyes {
-  position: relative;
-  top: -57px;
-  display: flex;
+	position: relative;
+	top: -58px;
+	display: flex;
+	width: 54px;
+	left: 26px;
 }
 
 .eye {
-  position: relative;
+  /*position: relative;
   width: 10px;
   height: 10px;
   display: block;
   border-radius: 50%;
-  margin-left: 28.7px;
+  margin-left: 28.5px;*/
 }
+
+.eye-left {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  display: block;
+  border-radius: 50%;
+  left: 5.5%;
+}
+
+.eye-right {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  display: block;
+  border-radius: 50%;
+  left: 56.5%;
+}
+
 
 .eye::before {
   content: "";
@@ -852,8 +874,7 @@ body.light .carousel-btn {
   height: 5px;
   border-radius: 50%;
   background: var(--corp-black);
-  transition:
-		transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .logo {
