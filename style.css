@@ -826,6 +826,7 @@ body.light .carousel-btn {
 	justify-content: center;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	width: auto;
 }
 
 .eyes {
@@ -834,15 +835,6 @@ body.light .carousel-btn {
 	display: flex;
 	width: 54px;
 	left: 26px;
-}
-
-.eye {
-  /*position: relative;
-  width: 10px;
-  height: 10px;
-  display: block;
-  border-radius: 50%;
-  margin-left: 28.5px;*/
 }
 
 .eye-left {
@@ -879,7 +871,7 @@ body.light .carousel-btn {
 
 .logo {
   width: 100px;
-  background-image: url("./assets/images/logo.svg");
+  height: auto;
 }
 
 .eye-white-left {
@@ -1220,10 +1212,6 @@ body.light .slogan h1{
 @media only screen and (max-width: 600px){
 	div.test2 { 
 		height: 200px; 
-	}
-	
-	.logo{
-		background-image: url("./assets/images/logo_mobile.svg");
 	}
 	
 	.eyes{
