@@ -851,7 +851,7 @@ body.light .carousel-btn {
   height: 11px;
   display: block;
   border-radius: 50%;
-  left: 5.5%;
+  left: -14%;
 }
 
 .eye-right {
@@ -860,7 +860,7 @@ body.light .carousel-btn {
   height: 11px;
   display: block;
   border-radius: 50%;
-  left: 56.5%;
+  left: -9%;
 }
 
 
@@ -879,10 +879,26 @@ body.light .carousel-btn {
 
 .logo {
   width: 100px;
+  background-image: url("./assets/images/logo.svg");
 }
-   
 
+.eye-white-left {
+	background: white;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	left: 42px;
+	position: absolute;
+}
 
+.eye-white-right {
+	background: white;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	left: 4px;
+	position: absolute;
+}
 
 
 
@@ -1205,6 +1221,15 @@ body.light .slogan h1{
 	div.test2 { 
 		height: 200px; 
 	}
+	
+	.logo{
+		background-image: url("./assets/images/logo_mobile.svg");
+	}
+	
+	.eyes{
+		display: none;
+	}
+	
 }
 
 
