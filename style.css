@@ -1067,13 +1067,6 @@ div.test2 {
 	width: 100%;
 }
 
-
-
-
-
-
-
-
 .outer_card{
 	max-width: 500px;
 	height: auto;
@@ -1091,14 +1084,15 @@ div.test2 {
 	width: 100%;
 	height: auto;
 	text-align: center;
-	top: 79%;
+	top: 78%;
 }
 
 .outer_card p{
 	width: 77%;
 	position: absolute;
 	margin-bottom: 0;
-	transform: translate(16%, -30%);
+	top: 88%;
+	left: 12%;
 	border: var(--corp-cyan);
 	border-width: 1px;
 	border-style: solid;
@@ -1167,7 +1161,18 @@ div.test2 {
 	transform: translate(-10%, 200%);
 }
 
-
+.testrahmen{
+	width: 77%;
+	height: 82%;
+	top: 0;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-49%);
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--corp-cyan);
+	z-index: -5;
+}
 
 
 
@@ -1180,6 +1185,7 @@ div.test2 {
 	justify-content: center;
 	align-items: center;
 	margin-top: 50px;
+	overflow: hidden;
 }
 
 .slogan img{
@@ -1225,6 +1231,17 @@ body.light .slogan h1{
 @media (max-width: 950px) {
 	main section {
 		padding: 50px 30px;
+	}
+	
+	/* ==============================
+       Startseite
+       ============================== */
+	.slogan img {
+		width: auto;
+	}
+	
+	body {
+		overflow-x: hidden;
 	}
 
 	/* ==============================
@@ -1297,9 +1314,9 @@ body.light .slogan h1{
 	.outer_card{
 		margin-bottom: 150px;
 	}
-	.outer_card p {
-		/*transform: translate(16%, -125%);*/
-	}
+	/*.outer_card p {
+		transform: translate(16%, -125%);
+	}*/
 }
 
 /* ==============================
@@ -1376,11 +1393,11 @@ body.light .slogan h1{
 	}
 	
 	.outer_card p {
-		transform: translate(16%, -20%);
+		top: 85%;
 	}
 	
 	.inner_profile_card{
-		top: 78%;
+		top: 77%;
 	}
 }
 
@@ -1397,7 +1414,7 @@ body.light .slogan h1{
 	}*/
 	
 	.inner_profile_card{
-		top: 76%;
+		top: 74%;
 	}
 }
 
