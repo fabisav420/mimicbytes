@@ -38,6 +38,40 @@ body.light {
 }
 
 /* ==============================
+   Hintergründe
+   ============================== */
+.background_purple{
+	background-color: var(--corp-purple);
+	color: var(--corp-white);
+}
+
+.background_pink{
+	background-color: var(--corp-pink);
+	color: var(--corp-white);
+}
+
+.background_cyan{
+	background-color: var(--corp-cyan);
+	color: var(--corp-black);
+}
+
+.background_blue{
+	background-color: var(--corp-blue);
+	color: var(--corp-white);
+}
+
+.background_grey-dark{
+	background-color: var(--corp-grey-dark);
+	color: var(--corp-white);
+}
+
+.background_grey-bright{
+	background-color: var(--corp-grey-bright);
+	color: var(--corp-black);
+}
+
+
+/* ==============================
    ACCESSIBILITY
    ============================== */
 .skip-link {
@@ -341,9 +375,13 @@ main {
    MAIN CONTENT & TYPOGRAPHY
    ============================== */
 main section {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 1rem 1.5rem;
+	padding: 30px 30px;
+}
+
+.section_div{
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .section_fullwidth{
@@ -414,6 +452,12 @@ a {
 	grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
 	gap: 1rem;
 }
+
+.team-grid2 {
+	width: 100%;
+	display: flex;
+}
+
 .team-card {
   background: var(--corp-grey-dark);
   border: 1px solid var(--corp-cyan);
@@ -1034,7 +1078,8 @@ div.test2 {
 	max-width: 500px;
 	height: auto;
 	position: relative;
-	min-width: 400px;
+	margin: auto;
+	margin-bottom: 200px;
 }
 
 .outer_card img {
@@ -1046,14 +1091,19 @@ div.test2 {
 	width: 100%;
 	height: auto;
 	text-align: center;
-	top: 57%;
+	top: 79%;
 }
 
 .outer_card p{
-	width: 60%;
+	width: 77%;
 	position: absolute;
 	margin-bottom: 0;
-	transform: translate(33%, -125%);
+	transform: translate(16%, -30%);
+	border: var(--corp-cyan);
+	border-width: 1px;
+	border-style: solid;
+	padding: 40px 20px 20px 20px;
+	z-index: -5;
 }
 
 .inner_profile_card h3{
@@ -1173,6 +1223,10 @@ body.light .slogan h1{
    Bildschirmbreite 950px
    ============================== */
 @media (max-width: 950px) {
+	main section {
+		padding: 50px 30px;
+	}
+
 	/* ==============================
        Footer
        ============================== */
@@ -1184,12 +1238,6 @@ body.light .slogan h1{
     .footer-right {
         align-items: center;
     }
-	
-	
-	
-	
-	
-	
 	
 	/* ==============================
        Projekte
@@ -1237,6 +1285,20 @@ body.light .slogan h1{
 	
 	.section_fullwidth {
 		padding: 0 0 20px 0;
+	}
+	
+/* ==============================
+   Zum testen aller cards
+   ============================== */
+	.team-grid2 {
+		display:block;
+	}
+	
+	.outer_card{
+		margin-bottom: 150px;
+	}
+	.outer_card p {
+		/*transform: translate(16%, -125%);*/
 	}
 }
 
@@ -1295,3 +1357,47 @@ body.light .slogan h1{
 		display: none;
 	}
 }
+
+/* ==============================
+   Bildschirmbreite 550px
+   ============================== */
+@media only screen and (max-width: 550px){
+	/*.outer_card p {
+		transform: translate(16%, -115%);
+	}*/
+}
+
+/* ==============================
+   Bildschirmbreite 500px
+   ============================== */
+@media only screen and (max-width: 500px){
+	.outer_card {
+		margin-bottom: 230px;
+	}
+	
+	.outer_card p {
+		transform: translate(16%, -20%);
+	}
+	
+	.inner_profile_card{
+		top: 78%;
+	}
+}
+
+/* ==============================
+   Bildschirmbreite 400px
+   ============================== */
+@media only screen and (max-width: 400px){
+	/*.outer_card p {
+		transform: translate(16%, -70%);
+	}
+	
+	.outer_card {
+		margin-bottom: 230px;
+	}*/
+	
+	.inner_profile_card{
+		top: 76%;
+	}
+}
+
