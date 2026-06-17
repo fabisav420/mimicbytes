@@ -43,31 +43,43 @@ body.light {
 .background_purple{
 	background-color: var(--corp-purple);
 	color: var(--corp-white);
+	z-index: -10;
+	position: relative;
 }
 
 .background_pink{
 	background-color: var(--corp-pink);
 	color: var(--corp-white);
+	z-index: -10;
+	position: relative;
 }
 
 .background_cyan{
 	background-color: var(--corp-cyan);
 	color: var(--corp-black);
+	z-index: -10;
+	position: relative;
 }
 
 .background_blue{
 	background-color: var(--corp-blue);
 	color: var(--corp-white);
+	z-index: -10;
+	position: relative;
 }
 
 .background_grey-dark{
 	background-color: var(--corp-grey-dark);
 	color: var(--corp-white);
+	z-index: -10;
+	position: relative;
 }
 
 .background_grey-bright{
 	background-color: var(--corp-grey-bright);
 	color: var(--corp-black);
+	z-index: -10;
+	position: relative;
 }
 
 
@@ -426,19 +438,16 @@ a {
    BUTTONS & LINKS
    ============================== */
 .btn {
-  display: inline-block;
-  background: var(--corp-pink);
-  color: var(--corp-white);
-  padding: 0.7rem 1.3rem;
-  border-radius: 6px;
+	display: inline-block;
+	color: var(--corp-white);
+	padding: 0.7rem 1.3rem;
+	border-radius: 6px;
+	background: var(--corp-purple);
+	border-style: none;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-}
-
-.btn:active {
-  transform: translateY(2px);
 }
 
 /* ==============================
@@ -511,8 +520,7 @@ input, textarea {
   font-size: 1rem;
 }
 input:focus, textarea:focus {
-  outline: 2px solid var(--corp-cyan);
-  border-color: var(--corp-pink);
+  outline: none;
 }
 body.light input, body.light textarea {
   background:var(--corp-white);
